@@ -348,12 +348,12 @@ class CornersProblem(search.SearchProblem):
             nextx, nexty = int(x + dx), int(y + dy)
             hitsWall = self.walls[nextx][nexty]
 
-            if (not hitsWall):
+            if (not hitsWall):  # an den einai toixos
                 nextnode = (nextx, nexty)
                 VisitedCorners = list(Visited)
                 
-                if (nextnode in self.corners):
-                    if (not nextnode in VisitedCorners):
+                if (nextnode in self.corners):  # ama o epomenos kombos einai gwnia
+                    if (not nextnode in VisitedCorners): # an den exeis faei tin gwnia
                         VisitedCorners.append(nextnode)
 
                 successors.append(((nextnode, VisitedCorners), action, 0))

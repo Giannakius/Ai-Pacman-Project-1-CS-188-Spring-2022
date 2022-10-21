@@ -395,7 +395,30 @@ def cornersHeuristic(state: Any, problem: CornersProblem):
 
     "*** YOUR CODE HERE ***"
     
-    return 0 # Default to trivial solution
+    cornersVisited = state[1]  # Visited corners
+    cornersUnvisited = cornersVisited  # Hold unvisited corners
+    node = state[0]  # Current node
+    heuristic = 0  # Heuristic value
+
+    for corner in corners:
+        if not corner in cornersVisited:
+            cornersUnvisited.append(corner)
+
+    while cornersUnvisited:
+        val = []
+        for corner in cornersUnvisited:
+            distance = util.manhattanDistance(node,corner)
+            val.append((corner, distance))
+        a, b = min(val, key=lambda tup: tup[1])
+        heuristic += b
+        node = a
+        cornersUnvisited.remove(a)
+
+
+    return heuristic
+
+
+    #return 0 # Default to trivial solution
 
 class AStarCornersAgent(SearchAgent):
     "A SearchAgent for FoodSearchProblem using A* and your foodHeuristic"

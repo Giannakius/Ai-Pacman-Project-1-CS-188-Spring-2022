@@ -394,24 +394,30 @@ def cornersHeuristic(state: Any, problem: CornersProblem):
     walls = problem.walls # These are the walls of the maze, as a Grid (game.py)
 
     "*** YOUR CODE HERE ***"
-    Current_Node = state[0]  # Current node
-    Visited = state[1]  # Visited corners
-    Heuristic = 0  # Heuristic value
-    Unvisited = []  # Hold unvisited corners
+    Current_Node = state[0] 
+    Visited = state[1]  
+    Heuristic = 0 
+    Unvisited = []  
 
-    for corner in corners:
-        if not corner in Visited:
-            Unvisited.append(corner)
+    for temp_node in corners:               # ama o node einai corner kai den einai visited
+        if not temp_node in Visited:        # bale ton stoys unvisited
+            Unvisited.append(temp_node)
 
-    while Unvisited:
+    while Unvisited:        # oso yparxoyn unvisited nodes
+        Min_corner = None   # bres tin mikroterh apostash
+        Min_Distance = 99999
         corner_distances = []
-        for corner in Unvisited:
-            distance = util.manhattanDistance(Current_Node,corner)
-            corner_distances.append((corner, distance))
-        temp_cor, temp_dist = min(corner_distances, key=lambda tup: tup[1])
-        Heuristic += temp_dist
-        Current_Node = temp_cor
-        Unvisited.remove(temp_cor)
+        
+        for cor in Unvisited:       
+            distance = util.manhattanDistance(Current_Node,cor) # briskei tin apostash metaksy current_node me toy corner.
+            
+            if distance < Min_Distance:     # briskei tin mikroterh apostash apo to current_node stin kontinoteri gwnia
+                Min_Distance = distance
+                Min_corner = cor
+                
+        Heuristic += Min_Distance
+        Current_Node = Min_corner           # krataei ton pio kontiko gwniako kombo
+        Unvisited.remove(Min_corner)        # ton kanei remove efoson episkeftike
 
 
     return Heuristic

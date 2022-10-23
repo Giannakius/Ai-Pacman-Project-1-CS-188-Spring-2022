@@ -540,8 +540,6 @@ def foodHeuristic(state: Tuple[Tuple, List[List]], problem: FoodSearchProblem):
 
         return min_dist
                 
-        
-    return 0 
     
     
     

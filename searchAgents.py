@@ -34,6 +34,7 @@ description for details.
 Good luck and happy searching!
 """
 
+from turtle import distance
 from typing import List, Tuple, Any
 from game import Directions
 from game import Agent
@@ -517,6 +518,41 @@ def foodHeuristic(state: Tuple[Tuple, List[List]], problem: FoodSearchProblem):
     """
     position, foodGrid = state
     "*** YOUR CODE HERE ***"
+    
+    remaining_food = foodGrid.asList()
+    
+    if (len(remaining_food) == 0 ):
+        return 0
+    else :
+        all_distances = []
+        
+        for food in remaining_food:
+            temp = mazeDistance(position,food,problem.startingGameState) # briskei tin min apostash metaksy toy current position kai toy food poy einai kombos me food
+            all_distances.append(temp)
+
+        
+        for x in range (0,len(remaining_food)):
+            if (x==0):
+                min_dist = all_distances[0]
+            else:
+                if(min_dist>all_distances[x]):
+                    min_dist = all_distances[x]
+
+        print (min_dist)
+
+                
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     return 0
 
 class ClosestDotSearchAgent(SearchAgent):

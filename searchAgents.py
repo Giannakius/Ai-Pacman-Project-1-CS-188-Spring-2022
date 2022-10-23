@@ -538,10 +538,10 @@ def foodHeuristic(state: Tuple[Tuple, List[List]], problem: FoodSearchProblem):
                 if(min_dist>all_distances[x]):
                     min_dist = all_distances[x]
 
-        print (min_dist)
-
+        return min_dist
                 
         
+    return 0 
     
     
     
@@ -549,11 +549,7 @@ def foodHeuristic(state: Tuple[Tuple, List[List]], problem: FoodSearchProblem):
     
     
     
-    
-    
-    
-    
-    return 0
+
 
 class ClosestDotSearchAgent(SearchAgent):
     "Search for all food using a sequence of searches"

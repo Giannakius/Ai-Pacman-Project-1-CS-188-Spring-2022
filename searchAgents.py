@@ -521,23 +521,23 @@ def foodHeuristic(state: Tuple[Tuple, List[List]], problem: FoodSearchProblem):
     
     remaining_food = foodGrid.asList()
     
-    if (len(remaining_food) == 0 ):
+    if (len(remaining_food) == 0 ):         # otan den yparxoyn alla fagita diathesima 
         return 0
     else :
-        all_distances = []
+        all_distances = []      # pinakas me oles tis apostaseis apo to curr se oloys toys komboys me fai
         
         for food in remaining_food:
-            temp = mazeDistance(position,food,problem.startingGameState) # briskei tin min apostash metaksy toy current position kai toy food poy einai kombos me food
+            temp = mazeDistance(position,food,problem.startingGameState) # briskei tin max apostash metaksy toy current position kai toy food poy einai kombos me food
             all_distances.append(temp)
 
-        min_dist = all_distances[0]
+        max_dist = all_distances[0]
         
         for x in range (1,len(remaining_food)):
 
-            if(min_dist<all_distances[x]):
-                min_dist = all_distances[x]
+            if(max_dist<all_distances[x]):
+                max_dist = all_distances[x]
 
-        return min_dist
+        return max_dist
                 
     
     

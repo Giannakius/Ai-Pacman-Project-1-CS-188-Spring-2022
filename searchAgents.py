@@ -530,13 +530,12 @@ def foodHeuristic(state: Tuple[Tuple, List[List]], problem: FoodSearchProblem):
             temp = mazeDistance(position,food,problem.startingGameState) # briskei tin min apostash metaksy toy current position kai toy food poy einai kombos me food
             all_distances.append(temp)
 
+        min_dist = all_distances[0]
         
-        for x in range (0,len(remaining_food)):
-            if (x==0):
-                min_dist = all_distances[0]
-            else:
-                if(min_dist>all_distances[x]):
-                    min_dist = all_distances[x]
+        for x in range (1,len(remaining_food)):
+
+            if(min_dist<all_distances[x]):
+                min_dist = all_distances[x]
 
         return min_dist
                 

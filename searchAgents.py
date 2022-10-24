@@ -527,7 +527,7 @@ def foodHeuristic(state: Tuple[Tuple, List[List]], problem: FoodSearchProblem):
         all_distances = []      # pinakas me oles tis apostaseis apo to curr se oloys toys komboys me fai
         
         for food in remaining_food:
-            temp = mazeDistance(position,food,problem.startingGameState) # briskei tin max apostash metaksy toy current position kai toy food poy einai kombos me food
+            temp = util.manhattanDistance(position,food) # briskei tin max apostash metaksy toy current position kai toy food poy einai kombos me food
             all_distances.append(temp)
 
         max_dist = all_distances[0]
@@ -540,12 +540,7 @@ def foodHeuristic(state: Tuple[Tuple, List[List]], problem: FoodSearchProblem):
         return max_dist
                 
     
-    
-    
-    
-    
-    
-    
+
 
 
 class ClosestDotSearchAgent(SearchAgent):
@@ -577,7 +572,17 @@ class ClosestDotSearchAgent(SearchAgent):
         problem = AnyFoodSearchProblem(gameState)
 
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        #util.raiseNotDefined()
 
 class AnyFoodSearchProblem(PositionSearchProblem):
     """

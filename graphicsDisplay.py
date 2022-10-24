@@ -61,7 +61,7 @@ SCARED_COLOR = formatColor(1,1,1)
 GHOST_VEC_COLORS = [colorToVector(c) for c in GHOST_COLORS]
 
 PACMAN_COLOR = formatColor(255.0/255.0,255.0/255.0,61.0/255)
-PACMAN_SCALE = 0.5
+PACMAN_SCALE = 3
 #pacman_speed = 0.25
 
 # Food

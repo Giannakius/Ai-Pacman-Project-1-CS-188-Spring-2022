@@ -519,7 +519,7 @@ def foodHeuristic(state: Tuple[Tuple, List[List]], problem: FoodSearchProblem):
     position, foodGrid = state
     "*** YOUR CODE HERE ***"
     
-    remaining_food = foodGrid.asList()
+    remaining_food = foodGrid.asList()      # theseis oi opoies exoyn akoma fai 
     
     if (len(remaining_food) == 0 ):         # otan den yparxoyn alla fagita diathesima 
         return 0
@@ -527,14 +527,14 @@ def foodHeuristic(state: Tuple[Tuple, List[List]], problem: FoodSearchProblem):
         all_distances = []      # pinakas me oles tis apostaseis apo to curr se oloys toys komboys me fai
         
         for food in remaining_food:
-            temp = util.manhattanDistance(position,food) # briskei tin max apostash metaksy toy current position kai toy food poy einai kombos me food
+            temp = util.manhattanDistance(position,food) # briskei tin apostash metaksy toy current position kai toy food poy einai kombos me food
             all_distances.append(temp)
 
-        max_dist = all_distances[0]
+        max_dist = all_distances[0]             
         
         for x in range (1,len(remaining_food)):
 
-            if(max_dist<all_distances[x]):
+            if(max_dist<all_distances[x]):          # Briskei tin megaliteri apostash apton pinaka all_distances kai tin epistrefei
                 max_dist = all_distances[x]
 
         return max_dist
@@ -572,16 +572,9 @@ class ClosestDotSearchAgent(SearchAgent):
         problem = AnyFoodSearchProblem(gameState)
 
         "*** YOUR CODE HERE ***"
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+        return search.bfs(problem)
+     
         #util.raiseNotDefined()
 
 class AnyFoodSearchProblem(PositionSearchProblem):
@@ -618,7 +611,14 @@ class AnyFoodSearchProblem(PositionSearchProblem):
         x,y = state
 
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+
+        
+        if self.food[x][y]:     # an stin thesh (x,y) yparxei food einai GoalState
+            return True
+        return False   
+        
+        
+        #util.raiseNotDefined()
 
 def mazeDistance(point1: Tuple[int, int], point2: Tuple[int, int], gameState: pacman.GameState) -> int:
     """
